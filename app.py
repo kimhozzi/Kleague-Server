@@ -60,26 +60,24 @@ def post_item(item:Item):
         result["msg"]=f"server error. {e!r}"
         return result
 
-"""
-t_board 용 데이터 받기
-class Board 라는거 만들고,
-user_id : int
-title : str
-content : str
-받는 post router 만들기
-함수 이름과 end point 는 post_board
-"""
-
 class Board(BaseModel):
     user_id:int
     title:str
     content:str
 
 @app.post("/post_board")
-def post_board(board:Board):
+async def post_board(board:Board
+               ,conn: asyncpg.Connection = Depends(get_db_connection)):
     result={"success":True, "data":None, "msg":""}
     try:
-        result["data"]=board
+        query = """
+            INSERT INTO t_board(user_id, title, content) 
+            VALUES ($1, $2, $3) 
+            RETURNING id, user_id, title, content, created_dt;
+        """
+        record = await conn.fetchrow(query, board.user_id, board.title, board.content)
+        result["msg"] = "Item created successfully."
+        result["data"] = Board(**dict(record))
         return result
     except Exception as e:
         result["success"]=False
