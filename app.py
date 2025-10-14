@@ -46,5 +46,21 @@ content : str
 함수 이름과 end point 는 post_board
 """
 
+class Board(BaseModel):
+    user_id:int
+    title:str
+    content:str
+
+@app.post("/post_board")
+def post_board(board:Board):
+    result={"success":True, "data":None, "msg":""}
+    try:
+        result["data"]=board
+        return result
+    except Exception as e:
+        result["success"]=False
+        result["msg"]=f"server error. {e!r}"
+        return result
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="localhost", port=8000, reload=True)
