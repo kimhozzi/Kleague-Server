@@ -36,5 +36,15 @@ def post_item(item:Item):
         result["msg"]=f"server error. {e!r}"
         return result
 
+"""
+t_board 용 데이터 받기
+class Board 라는거 만들고,
+user_id : int
+title : str
+content : str
+받는 post router 만들기
+함수 이름과 end point 는 post_board
+"""
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="localhost", port=8000, reload=True)
