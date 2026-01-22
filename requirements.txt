@@ -5,4 +5,10 @@ asyncpg         # 비동기 PostgreSQL 드라이버 (psycopg2-binary 대신 사�
 pydantic-settings # 환경 변수 관리를 위한 Pydantic 라이브러리
 python-dotenv # 로컬 개발 환경에서 .env 파일 로드를 위해 필요 (선택 사항)
 pydantic # fastapi req 유효성 검사
+
 scikit-learn
+pandas
+numpy
+lightgbm
+tensorflow
+joblib

@@ -9,3 +9,9 @@ requirements.txt
 uv pip install -r requirements.txt
 
 uv run python app.py
+
+
+requirements.txt 안에 있는거 설치하려고 python 버전 업데이트 진행 (24.0 -> 25.3)
+
+app.py
+train.py 
