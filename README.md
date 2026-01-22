@@ -13,5 +13,4 @@ uv run python app.py
 
 requirements.txt 안에 있는거 설치하려고 python 버전 업데이트 진행 (24.0 -> 25.3)
 
-app.py
-train.py 
+앙상블 모델을 쓸 때는 모델 간 최적의 성능을 찾는 파일 하나 만들어서 사용하는 것이 좋다.
